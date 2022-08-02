@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D80EE69D28993012009F500D /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE69C28993012009F500D /* Language.swift */; };
+		D80EE69F2899302E009F500D /* SourceTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE69E2899302E009F500D /* SourceTextViewController.swift */; };
 		D87363892897B7EE00BA09E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87363882897B7EE00BA09E9 /* AppDelegate.swift */; };
 		D873638B2897B7EE00BA09E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873638A2897B7EE00BA09E9 /* SceneDelegate.swift */; };
 		D873638D2897B7EE00BA09E9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873638C2897B7EE00BA09E9 /* TabBarController.swift */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D80EE69C28993012009F500D /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
+		D80EE69E2899302E009F500D /* SourceTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTextViewController.swift; sourceTree = "<group>"; };
 		D87363852897B7EE00BA09E9 /* Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87363882897B7EE00BA09E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D873638A2897B7EE00BA09E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,6 +47,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D80EE69B28992FE2009F500D /* Translate */ = {
+			isa = PBXGroup;
+			children = (
+				D87363A32897BA8000BA09E9 /* TranslateViewController.swift */,
+				D80EE69E2899302E009F500D /* SourceTextViewController.swift */,
+			);
+			path = Translate;
+			sourceTree = "<group>";
+		};
 		D873637C2897B7EE00BA09E9 = {
 			isa = PBXGroup;
 			children = (
@@ -64,8 +77,8 @@
 			children = (
 				D87363882897B7EE00BA09E9 /* AppDelegate.swift */,
 				D873638A2897B7EE00BA09E9 /* SceneDelegate.swift */,
-				D873638C2897B7EE00BA09E9 /* TabBarController.swift */,
 				D87363A52897BDFD00BA09E9 /* UIColor+.swift */,
+				D80EE69C28993012009F500D /* Language.swift */,
 				D87363A22897BA7300BA09E9 /* Scenes */,
 				D87363912897B7F000BA09E9 /* Assets.xcassets */,
 				D87363932897B7F000BA09E9 /* LaunchScreen.storyboard */,
@@ -77,7 +90,8 @@
 		D87363A22897BA7300BA09E9 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				D87363A32897BA8000BA09E9 /* TranslateViewController.swift */,
+				D873638C2897B7EE00BA09E9 /* TabBarController.swift */,
+				D80EE69B28992FE2009F500D /* Translate */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -163,7 +177,9 @@
 				D873638D2897B7EE00BA09E9 /* TabBarController.swift in Sources */,
 				D87363A42897BA8000BA09E9 /* TranslateViewController.swift in Sources */,
 				D87363892897B7EE00BA09E9 /* AppDelegate.swift in Sources */,
+				D80EE69D28993012009F500D /* Language.swift in Sources */,
 				D873638B2897B7EE00BA09E9 /* SceneDelegate.swift in Sources */,
+				D80EE69F2899302E009F500D /* SourceTextViewController.swift in Sources */,
 				D87363A62897BDFD00BA09E9 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
