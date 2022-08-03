@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		D80EE69D28993012009F500D /* Language.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE69C28993012009F500D /* Language.swift */; };
 		D80EE69F2899302E009F500D /* SourceTextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE69E2899302E009F500D /* SourceTextViewController.swift */; };
+		D80EE6A12899FB5D009F500D /* Bookmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE6A02899FB5D009F500D /* Bookmark.swift */; };
+		D80EE6A3289A006A009F500D /* UserDefaults+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE6A2289A006A009F500D /* UserDefaults+.swift */; };
+		D80EE6A6289A03CC009F500D /* BookmarkListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE6A5289A03CC009F500D /* BookmarkListViewController.swift */; };
+		D80EE6A8289A11F5009F500D /* BookmarkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE6A7289A11F5009F500D /* BookmarkCollectionViewCell.swift */; };
+		D80EE6AB289A155C009F500D /* BookmarkTextStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE6AA289A155C009F500D /* BookmarkTextStackView.swift */; };
+		D80EE6AD289A16D6009F500D /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = D80EE6AC289A16D6009F500D /* Type.swift */; };
 		D87363892897B7EE00BA09E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D87363882897B7EE00BA09E9 /* AppDelegate.swift */; };
 		D873638B2897B7EE00BA09E9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873638A2897B7EE00BA09E9 /* SceneDelegate.swift */; };
 		D873638D2897B7EE00BA09E9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D873638C2897B7EE00BA09E9 /* TabBarController.swift */; };
@@ -23,6 +29,12 @@
 /* Begin PBXFileReference section */
 		D80EE69C28993012009F500D /* Language.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Language.swift; sourceTree = "<group>"; };
 		D80EE69E2899302E009F500D /* SourceTextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceTextViewController.swift; sourceTree = "<group>"; };
+		D80EE6A02899FB5D009F500D /* Bookmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bookmark.swift; sourceTree = "<group>"; };
+		D80EE6A2289A006A009F500D /* UserDefaults+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+.swift"; sourceTree = "<group>"; };
+		D80EE6A5289A03CC009F500D /* BookmarkListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkListViewController.swift; sourceTree = "<group>"; };
+		D80EE6A7289A11F5009F500D /* BookmarkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkCollectionViewCell.swift; sourceTree = "<group>"; };
+		D80EE6AA289A155C009F500D /* BookmarkTextStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkTextStackView.swift; sourceTree = "<group>"; };
+		D80EE6AC289A16D6009F500D /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		D87363852897B7EE00BA09E9 /* Translate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Translate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D87363882897B7EE00BA09E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D873638A2897B7EE00BA09E9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,6 +68,35 @@
 			path = Translate;
 			sourceTree = "<group>";
 		};
+		D80EE6A4289A006F009F500D /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				D87363A52897BDFD00BA09E9 /* UIColor+.swift */,
+				D80EE6A2289A006A009F500D /* UserDefaults+.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		D80EE6A9289A1212009F500D /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				D80EE6A5289A03CC009F500D /* BookmarkListViewController.swift */,
+				D80EE6A7289A11F5009F500D /* BookmarkCollectionViewCell.swift */,
+				D80EE6AA289A155C009F500D /* BookmarkTextStackView.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		D80EE6AE289A191F009F500D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D80EE69C28993012009F500D /* Language.swift */,
+				D80EE6A02899FB5D009F500D /* Bookmark.swift */,
+				D80EE6AC289A16D6009F500D /* Type.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		D873637C2897B7EE00BA09E9 = {
 			isa = PBXGroup;
 			children = (
@@ -77,8 +118,8 @@
 			children = (
 				D87363882897B7EE00BA09E9 /* AppDelegate.swift */,
 				D873638A2897B7EE00BA09E9 /* SceneDelegate.swift */,
-				D87363A52897BDFD00BA09E9 /* UIColor+.swift */,
-				D80EE69C28993012009F500D /* Language.swift */,
+				D80EE6AE289A191F009F500D /* Models */,
+				D80EE6A4289A006F009F500D /* Extention */,
 				D87363A22897BA7300BA09E9 /* Scenes */,
 				D87363912897B7F000BA09E9 /* Assets.xcassets */,
 				D87363932897B7F000BA09E9 /* LaunchScreen.storyboard */,
@@ -91,6 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				D873638C2897B7EE00BA09E9 /* TabBarController.swift */,
+				D80EE6A9289A1212009F500D /* Bookmark */,
 				D80EE69B28992FE2009F500D /* Translate */,
 			);
 			path = Scenes;
@@ -175,12 +217,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				D873638D2897B7EE00BA09E9 /* TabBarController.swift in Sources */,
+				D80EE6A3289A006A009F500D /* UserDefaults+.swift in Sources */,
 				D87363A42897BA8000BA09E9 /* TranslateViewController.swift in Sources */,
 				D87363892897B7EE00BA09E9 /* AppDelegate.swift in Sources */,
 				D80EE69D28993012009F500D /* Language.swift in Sources */,
 				D873638B2897B7EE00BA09E9 /* SceneDelegate.swift in Sources */,
 				D80EE69F2899302E009F500D /* SourceTextViewController.swift in Sources */,
+				D80EE6AD289A16D6009F500D /* Type.swift in Sources */,
 				D87363A62897BDFD00BA09E9 /* UIColor+.swift in Sources */,
+				D80EE6A6289A03CC009F500D /* BookmarkListViewController.swift in Sources */,
+				D80EE6A12899FB5D009F500D /* Bookmark.swift in Sources */,
+				D80EE6AB289A155C009F500D /* BookmarkTextStackView.swift in Sources */,
+				D80EE6A8289A11F5009F500D /* BookmarkCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

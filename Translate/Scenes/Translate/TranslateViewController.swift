@@ -9,12 +9,7 @@ import UIKit
 import SnapKit
 
 final class TransLateViewController: UIViewController {
-  
-  enum `Type` {
-    case source
-    case target
-  }
-  
+      
   private var sourceLanguage: Language = .ko
   private var targetLanguage: Language = .en
 
@@ -74,15 +69,41 @@ final class TransLateViewController: UIViewController {
     
     let button = UIButton()
     button.setImage(UIImage(systemName: "bookmark"), for: .normal)
+    button.addTarget(self, action: #selector(didTabBookmarkButton), for: .touchUpInside)
     return button
   }()
+  
+  @objc func didTabBookmarkButton() {
+    guard let sourceText = sourceLabel.text,
+          let translateText = resultLabel.text,
+          bookmarkButton.imageView?.image == UIImage(systemName: "bookmark")
+    else { return }
+    
+    bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+    
+    let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks
+    let newBookmark = Bookmark(sourceLanguage: sourceLanguage,
+                               translatedLanguage: targetLanguage,
+                               sourceText: sourceText,
+                               translatedText: translateText)
+    
+    
+    UserDefaults.standard.bookmarks = [newBookmark] + currentBookmarks
+    
+    
+  }
   
   private lazy var copyButton: UIButton = {
     
     let button = UIButton()
     button.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
+    button.addTarget(self, action: #selector(didTabCopyButton), for: .touchUpInside)
     return button
   }()
+  
+  @objc func didTabCopyButton() {
+    UIPasteboard.general.string = resultLabel.text
+  }
   
   private lazy var sourceLabelBaseButton: UIView = {
     let view = UIView()
@@ -185,6 +206,7 @@ extension TransLateViewController: SourceTextViewControllerDelegate {
     if sourceText == "" { return}
     sourceLabel.text = sourceText
     sourceLabel.textColor = .label
+    bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
   }
 }
 
