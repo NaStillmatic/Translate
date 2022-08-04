@@ -1,0 +1,27 @@
+/* 
+  Localizable.strings
+  Translate
+
+  Created by HwangByungJo  on 2022/08/04.
+  
+*/
+
+
+// MARK: - Tabbar
+"Bookmark" = "Bookmark";
+"Translate" = "Translate";  // Navigation Title
+
+// MARK: - Language Model
+"Korean" = "Korean";
+"English" = "English";
+"Japanese" = "Japanese";
+"Chinese" = "Chinese";
+
+// MARK: - ActionSheet
+"Cancel" = "cancel";
+
+// MARK: - PlaceHolder
+"Enter_Text" = "Enter Text";
+
+
+

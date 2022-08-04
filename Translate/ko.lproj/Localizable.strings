@@ -1,0 +1,26 @@
+/* 
+  Localizable.strings
+  Translate
+
+  Created by HwangByungJo  on 2022/08/04.
+  
+*/
+
+// MARK: - Tabbar
+"Bookmark" = "번역";
+"Translate" = "즐겨찾기";  // Navigation Title
+
+// MARK: - Language Model
+"Korean" = "한국어";
+"English" = "영어";
+"Japanese" = "일본어";
+"Chinese" = "중국어";
+
+// MARK: - ActionSheet
+"Cancel" = "취소";
+
+// MARK: - PlaceHolder
+"Enter_Text" = "텍스트 입력";
+
+
+

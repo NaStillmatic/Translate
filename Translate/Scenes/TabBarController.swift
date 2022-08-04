@@ -16,12 +16,12 @@ final class TabBarController: UITabBarController {
     super.viewDidLoad()
     
     let translateViewController = TransLateViewController()
-    translateViewController.tabBarItem = UITabBarItem(title: "번역",
+    translateViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("Bookmark", comment: "번역"),
                                                       image: UIImage(systemName: "mic"),
                                                       selectedImage: UIImage(systemName: "mic.fill"))
     
     let bookmarkViewController = UINavigationController(rootViewController: BookmakrListViewController())
-    bookmarkViewController.tabBarItem = UITabBarItem(title: "즐겨찾기",
+    bookmarkViewController.tabBarItem = UITabBarItem(title: NSLocalizedString("Translate", comment: "즐겨찾기"),
                                                     image: UIImage(systemName: "star"),
                                                     selectedImage: UIImage(systemName: "star.fill"))
     
