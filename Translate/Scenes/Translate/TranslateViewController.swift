@@ -10,13 +10,12 @@ import SnapKit
 
 final class TransLateViewController: UIViewController {
       
-  private var sourceLanguage: Language = .ko
-  private var targetLanguage: Language = .en
+  private var translateManger = TranslatorManager()
 
   private lazy var sourceLanguageButton: UIButton = {
   
     let button = UIButton()
-    button.setTitle(sourceLanguage.title, for: .normal)
+    button.setTitle(translateManger.sourceLanguage.title, for: .normal)
     button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
     button.setTitleColor(.label, for: .normal)
     button.backgroundColor = .systemBackground
@@ -28,7 +27,7 @@ final class TransLateViewController: UIViewController {
   private lazy var targetLanguageButton: UIButton = {
   
     let button = UIButton()
-    button.setTitle(targetLanguage.title, for: .normal)
+    button.setTitle(translateManger.targetLanguage.title, for: .normal)
     button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
     button.setTitleColor(.label, for: .normal)
     button.backgroundColor = .systemBackground
@@ -59,8 +58,7 @@ final class TransLateViewController: UIViewController {
     
     let label = UILabel()
     label.font = .systemFont(ofSize: 23.0, weight: .bold)
-    label.textColor = .mainTintColor
-    label.text = "Hello"
+    label.textColor = .mainTintColor    
     label.numberOfLines = 0
     return label
   }()
@@ -82,8 +80,8 @@ final class TransLateViewController: UIViewController {
     bookmarkButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
     
     let currentBookmarks: [Bookmark] = UserDefaults.standard.bookmarks
-    let newBookmark = Bookmark(sourceLanguage: sourceLanguage,
-                               translatedLanguage: targetLanguage,
+    let newBookmark = Bookmark(sourceLanguage: translateManger.sourceLanguage,
+                               translatedLanguage: translateManger.targetLanguage,
                                sourceText: sourceText,
                                translatedText: translateText)
     
@@ -206,6 +204,10 @@ extension TransLateViewController: SourceTextViewControllerDelegate {
     if sourceText == "" { return}
     sourceLabel.text = sourceText
     sourceLabel.textColor = .label
+    
+    translateManger.translate(from: sourceText) { [weak self] translatedTex in
+      self?.resultLabel.text = translatedTex
+    }
     bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
   }
 }
@@ -222,14 +224,14 @@ extension TransLateViewController {
   func didTapLanguageButton(type: Type) {
     let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
     Language.allCases.forEach { language in
-      let action = UIAlertAction(title: language.title, style: .default) { _ in
+      let action = UIAlertAction(title: language.title, style: .default) { [weak self] _ in
         switch type {
           case .source:
-            self.sourceLanguage = language
-            self.sourceLanguageButton.setTitle(language.title, for: .normal)
+            self?.translateManger.sourceLanguage = language
+            self?.sourceLanguageButton.setTitle(language.title, for: .normal)
           case .target:
-            self.targetLanguage = language
-            self.targetLanguageButton.setTitle(language.title, for: .normal)
+            self?.translateManger.targetLanguage = language
+            self?.targetLanguageButton.setTitle(language.title, for: .normal)
         }
       }
       alertController.addAction(action)
