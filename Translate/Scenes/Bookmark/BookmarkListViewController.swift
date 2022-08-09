@@ -35,7 +35,7 @@ final class BookmakrListViewController: UIViewController {
     navigationItem.title = "즐겨찾기"
     navigationController?.navigationBar.prefersLargeTitles = true
     
-    setupLayout()
+    layout()
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -46,10 +46,10 @@ final class BookmakrListViewController: UIViewController {
   }
 }
 
-private extension BookmakrListViewController {
-  func setupLayout() {
+extension BookmakrListViewController {
+  
+  func layout() {
     view.addSubview(collectionView)
-    
     collectionView.snp.makeConstraints {
       $0.edges.equalToSuperview()
     }

@@ -12,64 +12,22 @@ final class TransLateViewController: UIViewController {
       
   private var translateManger = TranslatorManager()
 
-  private lazy var sourceLanguageButton: UIButton = {
+  private let sourceLanguageButton = UIButton()
+  private let targetLanguageButton = UIButton()
+  private let buttonStackView =  UIStackView()
+  private let resultBaseView = UIView()
+  private let resultLabel = UILabel()
+  private let bookmarkButton = UIButton()
+  private let copyButton = UIButton()
+  private let sourceLabelBaseButton = UIView()
+  private let sourceLabel = UILabel()
   
-    let button = UIButton()
-    button.setTitle(translateManger.sourceLanguage.title, for: .normal)
-    button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
-    button.setTitleColor(.label, for: .normal)
-    button.backgroundColor = .systemBackground
-    button.layer.cornerRadius = 9.0
-    button.addTarget(self, action: #selector(didTabSourceLanguageButton), for: .touchUpInside)
-    return button
-  }()
-  
-  private lazy var targetLanguageButton: UIButton = {
-  
-    let button = UIButton()
-    button.setTitle(translateManger.targetLanguage.title, for: .normal)
-    button.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
-    button.setTitleColor(.label, for: .normal)
-    button.backgroundColor = .systemBackground
-    button.layer.cornerRadius = 9.0
-    button.addTarget(self, action: #selector(didTabTargetLanguageButton), for: .touchUpInside)
-    return button
-  }()
-  
-  private lazy var butonStackView: UIStackView = {
-    let stackView = UIStackView()
-    stackView.distribution = .fillEqually
-    stackView.spacing = 8.0
-    
-    [sourceLanguageButton, targetLanguageButton].forEach {
-      stackView.addArrangedSubview($0)
-    }
-    return stackView
-    
-  }()
-  
-  private lazy var resultBaseView: UIView = {
-    let view = UIView()
-    view.backgroundColor = .white
-    return view
-  }()
-  
-  private lazy var resultLabel: UILabel = {
-    
-    let label = UILabel()
-    label.font = .systemFont(ofSize: 23.0, weight: .bold)
-    label.textColor = .mainTintColor
-    label.numberOfLines = 0
-    return label
-  }()
-  
-  private lazy var bookmarkButton: UIButton = {
-    
-    let button = UIButton()
-    button.setImage(UIImage(systemName: "bookmark"), for: .normal)
-    button.addTarget(self, action: #selector(didTabBookmarkButton), for: .touchUpInside)
-    return button
-  }()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+        
+    attribute()
+    layout()
+  }
   
   @objc func didTabBookmarkButton() {
     guard let sourceText = sourceLabel.text,
@@ -84,64 +42,68 @@ final class TransLateViewController: UIViewController {
                                translatedLanguage: translateManger.targetLanguage,
                                sourceText: sourceText,
                                translatedText: translateText)
-    
-    
     UserDefaults.standard.bookmarks = [newBookmark] + currentBookmarks
-    
-    
   }
-  
-  private lazy var copyButton: UIButton = {
-    
-    let button = UIButton()
-    button.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
-    button.addTarget(self, action: #selector(didTabCopyButton), for: .touchUpInside)
-    return button
-  }()
   
   @objc func didTabCopyButton() {
     UIPasteboard.general.string = resultLabel.text
   }
   
-  private lazy var sourceLabelBaseButton: UIView = {
-    let view = UIView()
-    view.backgroundColor = .systemBackground
-    
-    let tapGesture = UITapGestureRecognizer(target: self,
-                                            action: #selector(didTapSourceLabelBaseButton))
-    view.addGestureRecognizer(tapGesture)
-    return view
-  }()
-  
-  private lazy var sourceLabel: UILabel = {
-    let label = UILabel()
-    label.text = NSLocalizedString("Enter_Text", comment: "텍스트 입력")
-    label.textColor = .tertiaryLabel
-    label.numberOfLines = 0
-    label.font = .systemFont(ofSize: 23.0, weight: .semibold)
-    return label
-  }()
-  
-  
   @objc func didTapSourceLabelBaseButton () {
     let vc = SourceTextViewController(delegate: self)
     present(vc, animated: true)
-  }
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    view.backgroundColor = .secondarySystemBackground
-    setupViews()
   }
 }
 
 private extension TransLateViewController {
   
-  func setupViews() {
+  private func attribute() {
+    
+    view.backgroundColor = .secondarySystemBackground
+    
+    sourceLanguageButton.setTitle(translateManger.sourceLanguage.title, for: .normal)
+    sourceLanguageButton.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
+    sourceLanguageButton.setTitleColor(.label, for: .normal)
+    sourceLanguageButton.backgroundColor = .systemBackground
+    sourceLanguageButton.layer.cornerRadius = 9.0
+    sourceLanguageButton.addTarget(self, action: #selector(didTabSourceLanguageButton), for: .touchUpInside)
+        
+    targetLanguageButton.setTitle(translateManger.targetLanguage.title, for: .normal)
+    targetLanguageButton.titleLabel?.font = .systemFont(ofSize: 15.0, weight: .semibold)
+    targetLanguageButton.setTitleColor(.label, for: .normal)
+    targetLanguageButton.backgroundColor = .systemBackground
+    targetLanguageButton.layer.cornerRadius = 9.0
+    targetLanguageButton.addTarget(self, action: #selector(didTabTargetLanguageButton), for: .touchUpInside)
+        
+    buttonStackView.distribution = .fillEqually
+    buttonStackView.spacing = 8.0
+        
+    resultBaseView.backgroundColor = .white
+        
+    resultLabel.font = .systemFont(ofSize: 23.0, weight: .bold)
+    resultLabel.textColor = .mainTintColor
+    resultLabel.numberOfLines = 0
+    
+    bookmarkButton.setImage(UIImage(systemName: "bookmark"), for: .normal)
+    copyButton.setImage(UIImage(systemName: "doc.on.doc"), for: .normal)
+    copyButton.addTarget(self, action: #selector(didTabCopyButton), for: .touchUpInside)
+    bookmarkButton.addTarget(self, action: #selector(didTabBookmarkButton), for: .touchUpInside)
+    
+    sourceLabelBaseButton.backgroundColor = .systemBackground
+    let tapGesture = UITapGestureRecognizer(target: self,
+                                            action: #selector(didTapSourceLabelBaseButton))
+    sourceLabelBaseButton.addGestureRecognizer(tapGesture)
+    
+    sourceLabel.text = NSLocalizedString("Enter_Text", comment: "텍스트 입력")
+    sourceLabel.textColor = .tertiaryLabel
+    sourceLabel.numberOfLines = 0
+    sourceLabel.font = .systemFont(ofSize: 23.0, weight: .semibold)
+  }
+  
+  private func layout() {
   
     [
-      butonStackView,
+      buttonStackView,
       resultBaseView,
       resultLabel,
       bookmarkButton,
@@ -152,9 +114,13 @@ private extension TransLateViewController {
       view.addSubview($0)
     }
     
+    [sourceLanguageButton, targetLanguageButton].forEach {
+      buttonStackView.addArrangedSubview($0)
+    }
+    
     let defaultSpacing: CGFloat = 16.0
     
-    butonStackView.snp.makeConstraints {
+    buttonStackView.snp.makeConstraints {
       $0.top.equalTo(view.safeAreaLayoutGuide)
       $0.leading.trailing.equalToSuperview().inset(defaultSpacing)
       $0.height.equalTo(50)
@@ -162,7 +128,7 @@ private extension TransLateViewController {
     
     resultBaseView.snp.makeConstraints {
       $0.leading.trailing.equalToSuperview()
-      $0.top.equalTo(butonStackView.snp.bottom).offset(defaultSpacing)
+      $0.top.equalTo(buttonStackView.snp.bottom).offset(defaultSpacing)
       $0.bottom.equalTo(bookmarkButton.snp.bottom).offset(defaultSpacing)
     }
     

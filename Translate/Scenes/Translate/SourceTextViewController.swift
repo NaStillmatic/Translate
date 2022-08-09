@@ -14,9 +14,8 @@ protocol SourceTextViewControllerDelegate: AnyObject {
 final class SourceTextViewController: UIViewController {
  
   private let placeHolderText = NSLocalizedString("Enter_Text", comment: "텍스트 입력")
-  
   private weak var delegate: SourceTextViewControllerDelegate?
-  
+  private let textView = UITextView()
   
   init(delegate: SourceTextViewControllerDelegate?) {
     self.delegate = delegate
@@ -27,22 +26,26 @@ final class SourceTextViewController: UIViewController {
     fatalError("init(coder:) has not been implemented")
   }
   
-  
-  private lazy var textView: UITextView = {
-    let textView = UITextView()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    attribute()
+    layout()
+  }
+}
+
+extension SourceTextViewController {
+  private func attribute() {
+    view.backgroundColor = .systemBackground
+        
     textView.text = placeHolderText
     textView.textColor = .secondaryLabel
     textView.font = .systemFont(ofSize: 18.0, weight: .semibold)
     textView.returnKeyType = .done
     textView.delegate = self
-    return textView
-  }()
+  }
   
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    view.backgroundColor = .systemBackground
-    
+  private func layout() {
     view.addSubview(textView)
     textView.snp.makeConstraints {
       $0.edges.equalToSuperview().inset(16.0)
@@ -51,7 +54,6 @@ final class SourceTextViewController: UIViewController {
 }
 
 extension SourceTextViewController: UITextViewDelegate {
-  
   func textViewDidBeginEditing(_ textView: UITextView) {
     guard textView.textColor == .secondaryLabel else { return }
     
@@ -68,7 +70,6 @@ extension SourceTextViewController: UITextViewDelegate {
     dismiss(animated: true)
     return true
   }
-
 }
 
 
